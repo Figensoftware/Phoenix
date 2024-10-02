@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "username": "figenSoftware",
+      "password": "1",
+      "id": "dbd7"
+    },
+    {
+      "id": "a55d",
+      "username": "dream",
+      "password": "6"
+    },
+    {
+      "id": "32911",
+      "username": "dream",
+      "password": "4",
+      "balance": 1000
+    }
+  ]
+}

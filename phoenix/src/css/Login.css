@@ -1,0 +1,48 @@
+.login {
+    background-image: url("../images/phoenixlogin.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-div {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 2px 3px 4px lightgray;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-top: 25px;
+}
+
+.form-div>h3 {
+    width: 450px;
+    text-align: center;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    box-shadow: 2px 3px 4px lightgray;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    color: orange;
+}
+
+.buttons {
+    margin-bottom: 20px;
+}
+
+input::placeholder {
+    font-size: 15px;
+}
