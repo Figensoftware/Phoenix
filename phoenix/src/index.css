@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+input::placeholder {
+    font-size: 14px;
+}
+
+
+.category {
+    margin-top: 60px;
+    margin-left: 20px;
+}
+
+
+.css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+    font-size: 12px;
+    white-space: nowrap;
+}

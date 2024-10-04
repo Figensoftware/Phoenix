@@ -46,6 +46,7 @@ function LoginPage() {
                 if (checkUserResponse.result && checkUserResponse.currentUser) {
                     // username is right
                     dispatch(setCurrentUser(checkUserResponse.currentUser));
+                    localStorage.setItem("currentUser", JSON.stringify(checkUserResponse.currentUser));
                     toast.success("Successfully logged in.")
                     navigate("/");
                 } else {
