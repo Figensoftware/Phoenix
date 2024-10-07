@@ -1,5 +1,6 @@
 //! 1. npm create vite@latest
-//   cd phoenix
+//* 1.   cd phoenix - npm run dev -> frontend
+//* 2. npx json-server --watch ./src/jsons/db.json --port 5000 -> backend
 //   npm install
 // INSTALLATİON:
 //Todo: Typescript

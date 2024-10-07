@@ -7,13 +7,20 @@ import logo from "../images/logo.png";
 import { InputAdornment, TextField } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setCurrentUser } from '../redux/appSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentUser, setDrawer, setFilterProducts, setProducts } from '../redux/appSlice';
 import { toast } from 'react-toastify';
+import { ProductType } from '../types/Types';
+import productService from '../services/ProductService';
+import Badge from '@mui/material/Badge';
+import { CiShoppingBasket } from "react-icons/ci";
+import { RootState } from '../redux/store';
+
 
 function Navbar() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { basket } = useSelector((state: RootState) => state.basket);
 
     const logout = () => {
         localStorage.removeItem("currentUser");
@@ -22,6 +29,23 @@ function Navbar() {
         toast.success("You have successfully logout.");
     }
 
+    const handleFilter = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        try {
+            if (e.target.value) {
+                dispatch(setFilterProducts(e.target.value));
+            } else {
+                const products: ProductType[] = await productService.getAllProducts();
+                dispatch(setProducts(products));
+            }
+        } catch (error) {
+            toast.error("An error occurred while filtering products." + error);
+        }
+    }
+
+
+    const openDrawer = () => {
+        dispatch(setDrawer(true));
+    }
 
     return (
         <div>
@@ -42,6 +66,7 @@ function Navbar() {
                     </Typography>
                     <div className='navbar'>
                         <TextField
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleFilter(e)}
                             sx={{ width: "300px", marginBottom: "25px", marginRight: "20px" }}
                             id="username"
                             placeholder="search products..."
@@ -57,6 +82,10 @@ function Navbar() {
                             variant="standard"
 
                         />
+                        {/*  */}
+                        <Badge onClick={openDrawer} badgeContent={basket.length} color="warning" sx={{ margin: "5px 20px", cursor: "pointer" }}>
+                            <CiShoppingBasket style={{ fontSize: "24px" }} />
+                        </Badge>
                         {/*  */}
                         <Button onClick={logout} color="warning" sx={{ textTransform: "none", color: "#000", fontSize: "15px" }} variant='outlined'>Logout</Button>
                     </div>
